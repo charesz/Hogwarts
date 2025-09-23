@@ -40,7 +40,7 @@
         .header {
             background-color: #5102027a;
             border-bottom: 2px solid #d38e0d;
-            padding: 0 2rem;
+            padding: 0; /* Reduced padding to move elements closer to the edge */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -57,7 +57,6 @@
 
         .font-merriweather {
             font-family: 'Merriweather', serif;
-            color: #ffa303;
         }
 
         /* --- Full screen section styling --- */
@@ -101,7 +100,7 @@
             width: 100%;
             height: 100%;
             /* Diagonal gradient from gold to red */
-            background-image: linear-gradient(to bottom, rgba(10, 10, 10, 0), rgba(51, 3, 3, 0.279));
+            background-color: rgba(0, 0, 0, 0.207); /* Even darker overlay */
             z-index: 1;
         }
         
@@ -151,14 +150,14 @@
     <header class="header">
         <div class="flex items-center space-x-2">
             <img src="gryffindor/Gryffindor-Logo.png" alt="Gryffindor Crest" class="logo-image">
-            <span class="font-merriweather text-xl tracking-wider">GRYFFINDOR</span>
+            <span class="font-merriweather text-gryffindor-gold text-xl tracking-wider">GRYFFINDOR</span>
         </div>
         <nav class="hidden md:flex space-x-8">
             <a href="#home" class="hover:text-gryffindor-gold transition-colors">ABOUT US</a>
             <a href="#values" class="hover:text-gryffindor-gold transition-colors">OUR VALUES</a>
             <a href="#common-room" class="hover:text-gryffindor-gold transition-colors">COMMON ROOM</a>
         </nav>
-        <button class="bg-gryffindor-gold hover:bg-opacity-80 transition-opacity text-gryffindor font-bold py-2 px-6 rounded-full shadow-lg">Contact us</button>
+         <button id="showModalBtn" class="bg-gryffindor-gold hover:bg-opacity-80 transition-opacity text-gryffindor font-bold py-2 px-6 rounded-full shadow-lg mr-4">Contact us</button>
     </header>
 
     <!-- Hero Section -->
@@ -169,7 +168,7 @@
                     <img src="gryffindor/gryffindor-icon.gif" alt="Gryffindor Lion" class="w-2/3 max-w-md h-auto rounded-full shadow-2xl md:ml-24 transform translate-y-8 md:translate-y-0 opacity-90">
                 </div>
                 <div class="md:w-1/2 mt-12 md:mt-0 text-center md:text-left p-6 md:p-12 backdrop-blur-sm bg-gryffindor/50 rounded-2xl border-2 border-gryffindor-gold outline outline-3 outline-offset-4 outline-gryffindor-gold shadow-2xl">
-                    <h1 class="font-merriweather text-4xl md:text-6xl text-gryffindor-gold tracking-wide">GRYFFINDOR</h1>
+                    <h1 class="font-merriweather text-4xl text-gryffindor-gold md:text-6xl tracking-wide">GRYFFINDOR</h1>
                     <h2 class="font-bold text-2xl md:text-3xl text-white/90 mt-2">BRAVE, DARING, CHIVALROUS</h2>
                     <p class="mt-4 text-white/70 leading-relaxed text-lg">Welcome to Gryffindor House. Discover the bravest and most adventurous students of Hogwarts.</p>
                     <a href="#values" class="inline-block bg-gryffindor-gold hover:bg-opacity-80 transition-opacity text-gryffindor font-bold py-3 px-8 rounded-full shadow-lg mt-6">Explore our values</a>
@@ -183,8 +182,8 @@
     <section class="full-screen-section values-bg" id="values">
         <div class="section-content">
             <div class="flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto">
-                <div class="md:w-1/2 text-center md:text-left backdrop-blur-sm bg-gryffindor/50 p-8 rounded-2xl border-2 border-gryffindor-gold shadow-2xl">
-                    <h2 class="font-merriweather text-4xl md:text-5xl text-gryffindor-gold tracking-wide">WHAT MAKES US WHO WE ARE</h2>
+                <div class="md:w-1/2 mt-12 md:mt-0 text-center md:text-left p-6 md:p-12 backdrop-blur-sm bg-gryffindor/50 rounded-2xl border-2 border-gryffindor-gold outline outline-3 outline-offset-4 outline-gryffindor-gold shadow-2xl">
+                    <h2 class="font-merriweather text-4xl text-gryffindor-gold md:text-5xl tracking-wide">WHAT MAKES US WHO WE ARE</h2>
                     <p class="mt-4 text-white/70 leading-relaxed text-lg">Look through the stories of our brightest students.</p>
 
                     <div class="mt-8 space-y-4 text-left">
@@ -243,7 +242,7 @@
             <div class="relative w-full max-w-6xl mx-auto p-8 rounded-2xl border-2 border-gryffindor-gold outline outline-4 outline-offset-4 outline-gryffindor-gold shadow-2xl overflow-hidden">
                 <!-- Background image (inside the box only) -->
                 <img 
-                    src="c88abc29-4182-4dbf-a3ae-124037f4e573.png" 
+                    src="gryffindor/small-common-room.png" 
                     alt="Gryffindor Common Room" 
                     class="absolute inset-0 w-full h-full object-cover object-center z-0">
                 <!-- Overlay inside the box -->
@@ -251,7 +250,7 @@
                 
                 <!-- Content -->
                 <div class="relative z-20 flex flex-col items-center justify-center text-center">
-                    <h2 class="font-merriweather text-4xl md:text-5xl text-white tracking-wide">WELCOME TO GRYFFINDOR COMMON ROOM</h2>
+                    <h2 class="font-merriweather text-4xl md:text-5xl text-gryffindor-gold tracking-wide">WELCOME TO GRYFFINDOR COMMON ROOM</h2>
                     <p class="mt-4 text-white/70 leading-relaxed text-lg">Step inside and explore the heart of our house.</p>
                     <button class="bg-gryffindor-gold hover:bg-opacity-80 transition-opacity text-gryffindor font-bold py-3 px-8 rounded-full shadow-lg mt-6">Take a tour</button>
                 </div>
