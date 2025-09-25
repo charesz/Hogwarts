@@ -15,6 +15,7 @@ Click below to explore the four houses of Hogwarts:
 
 ---
 
+```
 ## 📂 Project Structure
 /
 ├── index.html # Landing page
@@ -25,6 +26,7 @@ Click below to explore the four houses of Hogwarts:
 ├── style.css # Styling
 ├── script.js # Interactivity
 └── images,(houses names)/ # House crests, doors, backgrounds, etc.
+```
 
 ## 🛠️ Technologies Used
 
