@@ -14,9 +14,8 @@ Click below to explore the four houses of Hogwarts:
 - **Immersive Design** — Custom images, house crests, and magical vibes.  
 
 ---
-
-```
 ## 📂 Project Structure
+```
 /
 ├── index.html # Landing page
 ├── gryffindor.html # Gryffindor house page
