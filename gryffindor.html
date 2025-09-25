@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <link rel="icon" type="image/png" href="gryffindor/hogwarts crest.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gryffindor House</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'gryffindor': '#5c0000',
+                        'gryffindor-red': '#8b0000',
+                        'gryffindor-gold': '#d3a625',
+                    },
+                    fontFamily: {
+                        'serif': ['"Merriweather"', 'serif'],
+                        'sans': ['"Inter"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Inter:wght@400;600&display=swap');
+        
+        /* Apply scroll-snap to the html and body */
+        html {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+        }
+
+        body {
+            color: #e0e7ff;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .header {
+            background-color: #5102027a;
+            border-bottom: 2px solid #d38e0d;
+            padding: 0; /* Reduced padding to move elements closer to the edge */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            height: 70px;
+        }
+
+        .logo-image {
+            height: 60px;
+            margin-left: 2rem;
+        }
+
+        .font-merriweather {
+            font-family: 'Merriweather', serif;
+            color: #ffa303;
+        }
+
+        /* --- Full screen section styling --- */
+        .full-screen-section {
+            height: 100vh;
+            scroll-snap-align: start;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        /* --- Section-specific backgrounds and overlays --- */
+        .hero-bg {
+            background-image: url("gryffindor/434136fc-f27b-4f18-8128-ac23fa7bc4bf.png");
+        }
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Gradient from transparent to a dark red */
+            background-image: linear-gradient(to bottom, rgba(91, 1, 1, 0.256), rgba(0, 0, 0, 0));
+            z-index: 1;
+        }
+        
+        .values-bg {
+            background-image: url("gryffindor/makes section.png");
+        }
+        .values-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Diagonal gradient from gold to red */
+            background-color: rgba(0, 0, 0, 0.207); /* Even darker overlay */
+            z-index: 1;
+        }
+        
+        .common-room-bg {
+            background-image: url("gryffindor/common-room.png");
+        }
+        .common-room-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.207); /* Even darker overlay */
+            z-index: 1;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        .section-content {
+            position: relative;
+            z-index: 2; /* Content should be above the overlay */
+            width: 100%;
+            max-width: 1280px;
+            margin: auto;
+        }
+
+        /* Accordion content hidden by default */
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            padding: 0 1rem; /* collapsed padding */
+        }
+
+        .dropdown-content.active {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in, padding 0.5s ease-in;
+            padding: 1rem; /* expanded padding */
+        }
+    </style>
+</head>
+<body class="bg-gryffindor font-sans">
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="flex items-center space-x-2">
+            <img src="gryffindor/Gryffindor-Logo.png" alt="Gryffindor Crest" class="logo-image">
+            <span class="font-merriweather text-gryffindor-gold text-xl tracking-wider">GRYFFINDOR</span>
+        </div>
+        <nav class="hidden md:flex space-x-8">
+            <a href="#home" class="hover:text-gryffindor-gold transition-colors">ABOUT US</a>
+            <a href="#values" class="hover:text-gryffindor-gold transition-colors">OUR VALUES</a>
+            <a href="#common-room" class="hover:text-gryffindor-gold transition-colors">COMMON ROOM</a>
+        </nav>
+         <button id="showModalBtn" class="bg-gryffindor-gold hover:bg-opacity-80 transition-opacity text-gryffindor font-bold py-2 px-6 rounded-full shadow-lg mr-4">Contact us</button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="full-screen-section hero-bg" id="home">
+        <div class="section-content">
+            <div class="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl mx-auto">
+                <div class="md:w-1/2 flex justify-center md:justify-start">
+                    <img src="gryffindor/gryffindor-icon.gif" alt="Gryffindor Lion" class="w-2/3 max-w-md h-auto rounded-full shadow-2xl md:ml-24 transform translate-y-8 md:translate-y-0 opacity-90">
+                </div>
+                <div class="md:w-1/2 mt-12 md:mt-0 text-center md:text-left p-6 md:p-12 backdrop-blur-sm bg-gryffindor/50 rounded-2xl border-2 border-gryffindor-gold outline outline-3 outline-offset-4 outline-gryffindor-gold shadow-2xl">
+                    <h1 class="font-merriweather text-4xl text-gryffindor-gold md:text-6xl tracking-wide">GRYFFINDOR</h1>
+                    <h2 class="font-bold text-2xl md:text-3xl text-white/90 mt-2">BRAVE, DARING, CHIVALROUS</h2>
+                    <p class="mt-4 text-white/70 leading-relaxed text-lg">Welcome to Gryffindor House. Discover the bravest and most adventurous students of Hogwarts.</p>
+                    <a href="#values" class="inline-block bg-gryffindor-gold hover:bg-opacity-80 transition-opacity text-gryffindor font-bold py-3 px-8 rounded-full shadow-lg mt-6">Explore our values</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- What Makes Us Who We Are Section -->
+    <section class="full-screen-section values-bg" id="values">
+        <div class="section-content">
+            <div class="flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto">
+                <div class="md:w-1/2 mt-12 md:mt-0 text-center md:text-left p-6 md:p-12 backdrop-blur-sm bg-gryffindor/50 rounded-2xl border-2 border-gryffindor-gold outline outline-3 outline-offset-4 outline-gryffindor-gold shadow-2xl">
+                    <h2 class="font-merriweather text-4xl text-gryffindor-gold md:text-5xl tracking-wide">WHAT MAKES US WHO WE ARE</h2>
+                    <p class="mt-4 text-white/70 leading-relaxed text-lg">Look through the stories of our brightest students.</p>
+
+                    <div class="mt-8 space-y-4 text-left">
+                        <div class="dropdown-item">
+                            <button class="dropdown-toggle w-full flex justify-between items-center py-4 px-6 rounded-lg bg-gryffindor-red hover:bg-opacity-80 transition-all font-bold text-white text-lg">
+                                <span>BRAVERY</span>
+                                <span><svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+                            </button>
+                            <div class="dropdown-content text-white/70">
+                                <p>Gryffindor students are known for their immense bravery. We face challenges head-on and never back down from a fight.</p>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-item">
+                            <button class="dropdown-toggle w-full flex justify-between items-center py-4 px-6 rounded-lg bg-gryffindor-red hover:bg-opacity-80 transition-all font-bold text-white text-lg">
+                                <span>DARING</span>
+                                <span><svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+                            </button>
+                            <div class="dropdown-content text-white/70">
+                                <p>We believe in taking risks and embracing adventure. A Gryffindor is always ready to explore the unknown.</p>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-item">
+                            <button class="dropdown-toggle w-full flex justify-between items-center py-4 px-6 rounded-lg bg-gryffindor-red hover:bg-opacity-80 transition-all font-bold text-white text-lg">
+                                <span>NERVE</span>
+                                <span><svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+                            </button>
+                            <div class="dropdown-content text-white/70">
+                                <p>Nerve is the courage to stand up for what you believe in, even when it means facing adversity.</p>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-item">
+                            <button class="dropdown-toggle w-full flex justify-between items-center py-4 px-6 rounded-lg bg-gryffindor-red hover:bg-opacity-80 transition-all font-bold text-white text-lg">
+                                <span>CHIVALRY</span>
+                                <span><svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+                            </button>
+                            <div class="dropdown-content text-white/70">
+                                <p>We are the knights of Hogwarts. We champion the weak, protect the innocent, and embody true chivalry.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:w-1/2 flex justify-center md:justify-end mt-10 md:mt-0">
+                    <img src="gryffindor/lion banner.png" alt="Gryffindor Crest" class="w-3/2 max-w-sm h-auto rounded-xl shadow-2xl opacity-95">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome to Common Room Section -->
+    <section class="full-screen-section common-room-bg" id="common-room">
+        <div class="section-content">
+            <div class="relative w-full max-w-6xl mx-auto p-8 rounded-2xl border-2 border-gryffindor-gold outline outline-4 outline-offset-4 outline-gryffindor-gold shadow-2xl overflow-hidden">
+                <!-- Background image (inside the box only) -->
+                <img 
+                    src="gryffindor/small-common-room.png" 
+                    alt="Gryffindor Common Room" 
+                    class="absolute inset-0 w-full h-full object-cover object-center z-0">
+                <!-- Overlay inside the box -->
+                <div class="absolute inset-0 bg-gryffindor/20 z-10"></div>
+                
+                <!-- Content -->
+                <div class="relative z-20 flex flex-col items-center justify-center text-center">
+                    <h2 class="font-merriweather text-4xl md:text-5xl text-gryffindor-gold tracking-wide">WELCOME TO GRYFFINDOR COMMON ROOM</h2>
+                    <p class="mt-4 text-white/70 leading-relaxed text-lg">Step inside and explore the heart of our house.</p>
+                    <button class="bg-gryffindor-gold hover:bg-opacity-80 transition-opacity text-gryffindor font-bold py-3 px-8 rounded-full shadow-lg mt-6">Take a tour</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript for dropdowns -->
+    <script>
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('svg');
+                
+                content.classList.toggle('active');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+    </script>
+</body>
+</html>
