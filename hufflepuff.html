@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <link rel="icon" type="image/png" href="images/hogwarts_crest.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hufflepuff House</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'hufflepuff': '#222222',
+                        'hufflepuff-yellow': '#ffc107',
+                        'hufflepuff-black': '#000000',
+                    },
+                    fontFamily: {
+                        'serif': ['"Merriweather"', 'serif'],
+                        'sans': ['"Inter"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Inter:wght@400;600&display=swap');
+        
+        /* Apply scroll-snap to the html and body */
+        html {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+        }
+
+        body {
+            color: #e0e7ff;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .header {
+            background-color: #2222227a;
+            border-bottom: 2px solid #ffc107;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            height: 70px;
+        }
+
+        .logo-image {
+            height: 60px;
+            margin-left: 2rem;
+        }
+
+        .font-merriweather {
+            font-family: 'Merriweather', serif;
+            color: #ffc107;
+        }
+
+        /* --- Full screen section styling --- */
+        .full-screen-section {
+            height: 100vh;
+            scroll-snap-align: start;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        /* --- Section-specific backgrounds and overlays --- */
+        .hero-bg {
+            background-image: url("images/init_bg.png");
+        }
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to bottom, rgba(34, 34, 34, 0.256), rgba(0, 0, 0, 0));
+            z-index: 1;
+        }
+        
+        .values-bg {
+            background-image: url("images/bg_values.png");
+        }
+        .values-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.207);
+            z-index: 1;
+        }
+        
+        .common-room-bg {
+            background-image: url("images/common_room2.png");
+        }
+        .common-room-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.207);
+            z-index: 1;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        .section-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1280px;
+            margin: auto;
+        }
+
+        /* Accordion content hidden by default */
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            padding: 0 1rem;
+        }
+
+        .dropdown-content.active {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in, padding 0.5s ease-in;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-hufflepuff font-sans">
+
+    <header class="header">
+        <div class="flex items-center space-x-2">
+            <img src="images/logo.png" alt="Hufflepuff Crest" class="logo-image">
+            <span class="font-merriweather text-hufflepuff-yellow text-xl tracking-wider">HUFFLEPUFF</span>
+        </div>
+        <nav class="hidden md:flex space-x-8">
+            <a href="#home" class="hover:text-hufflepuff-yellow transition-colors">ABOUT US</a>
+            <a href="#values" class="hover:text-hufflepuff-yellow transition-colors">OUR VALUES</a>
+            <a href="#common-room" class="hover:text-hufflepuff-yellow transition-colors">COMMON ROOM</a>
+        </nav>
+        <button id="showModalBtn" class="bg-hufflepuff-yellow hover:bg-opacity-80 transition-opacity text-hufflepuff-black font-bold py-2 px-6 rounded-full shadow-lg mr-4">Contact us</button>
+    </header>
+
+    <section class="full-screen-section hero-bg" id="home">
+        <div class="section-content">
+            <div class="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl mx-auto">
+                <div class="md:w-1/2 flex justify-center md:justify-start">
+                    <img src="images/hufflepuff.gif" alt="Hufflepuff Badger" class="w-2/3 max-w-md h-auto rounded-full shadow-2xl md:ml-24 transform translate-y-8 md:translate-y-0 opacity-90">
+                </div>
+                <div class="md:w-1/2 mt-12 md:mt-0 text-center md:text-left p-6 md:p-12 backdrop-blur-sm bg-hufflepuff/50 rounded-2xl border-2 border-hufflepuff-yellow outline outline-3 outline-offset-4 outline-hufflepuff-yellow shadow-2xl">
+                    <h1 class="font-merriweather text-4xl text-hufflepuff-yellow md:text-6xl tracking-wide">HUFFLEPUFF</h1>
+                    <h2 class="font-bold text-2xl md:text-3xl text-white/90 mt-2">DEDICATED, PATIENT, LOYAL</h2>
+                    <p class="mt-4 text-white/70 leading-relaxed text-lg">Welcome to Hufflepuff House. Discover the most dedicated and loyal students of Hogwarts.</p>
+                    <a href="#values" class="inline-block bg-hufflepuff-yellow hover:bg-opacity-80 transition-opacity text-hufflepuff font-bold py-3 px-8 rounded-full shadow-lg mt-6">Explore our values</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="full-screen-section values-bg" id="values">
+        <div class="section-content">
+            <div class="flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto">
+                <div class="md:w-1/2 mt-12 md:mt-0 text-center md:text-left p-6 md:p-12 backdrop-blur-sm bg-hufflepuff/50 rounded-2xl border-2 border-hufflepuff-yellow outline outline-3 outline-offset-4 outline-hufflepuff-yellow shadow-2xl">
+                    <h2 class="font-merriweather text-4xl text-hufflepuff-yellow md:text-5xl tracking-wide">WHAT MAKES US WHO WE ARE</h2>
+                    <p class="mt-4 text-white/70 leading-relaxed text-lg">Look through the stories of our brightest students.</p>
+
+                    <div class="mt-8 space-y-4 text-left">
+                        <div class="dropdown-item">
+                            <button class="dropdown-toggle w-full flex justify-between items-center py-4 px-6 rounded-lg bg-hufflepuff-black hover:bg-opacity-80 transition-all font-bold text-white text-lg">
+                                <span>DEDICATION</span>
+                                <span><svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+                            </button>
+                            <div class="dropdown-content text-white/70">
+                                <p>Hufflepuff students are known for their dedication and hard work. We are committed to our goals and see them through to the end.</p>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-item">
+                            <button class="dropdown-toggle w-full flex justify-between items-center py-4 px-6 rounded-lg bg-hufflepuff-black hover:bg-opacity-80 transition-all font-bold text-white text-lg">
+                                <span>PATIENCE</span>
+                                <span><svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+                            </button>
+                            <div class="dropdown-content text-white/70">
+                                <p>We believe that good things come to those who wait and work diligently. Patience is a virtue we hold dear.</p>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-item">
+                            <button class="dropdown-toggle w-full flex justify-between items-center py-4 px-6 rounded-lg bg-hufflepuff-black hover:bg-opacity-80 transition-all font-bold text-white text-lg">
+                                <span>LOYALTY</span>
+                                <span><svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+                            </button>
+                            <div class="dropdown-content text-white/70">
+                                <p>We are fierce friends and stand by those we care about. Our loyalty is unwavering and a source of great strength.</p>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-item">
+                            <button class="dropdown-toggle w-full flex justify-between items-center py-4 px-6 rounded-lg bg-hufflepuff-black hover:bg-opacity-80 transition-all font-bold text-white text-lg">
+                                <span>FAIRNESS</span>
+                                <span><svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+                            </button>
+                            <div class="dropdown-content text-white/70">
+                                <p>We believe in justice and treat everyone with kindness and fairness. We believe that everyone deserves a chance to shine.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:w-1/2 flex justify-center md:justify-end mt-10 md:mt-0">
+                    <img src="images/banner.png" alt="Hufflepuff Crest" class="w-3/2 max-w-sm h-auto rounded-xl shadow-2xl opacity-95">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="full-screen-section common-room-bg" id="common-room">
+        <div class="section-content">
+            <div class="relative w-full max-w-6xl mx-auto p-8 rounded-2xl border-2 border-hufflepuff-yellow outline outline-4 outline-offset-4 outline-hufflepuff-yellow shadow-2xl overflow-hidden">
+                <img 
+                    src="images/common_room.png" 
+                    alt="Hufflepuff Common Room" 
+                    class="absolute inset-0 w-full h-full object-cover object-center z-0">
+                <div class="absolute inset-0 bg-hufflepuff/20 z-10"></div>
+                
+                <div class="relative z-20 flex flex-col items-center justify-center text-center">
+                    <h2 class="font-merriweather text-4xl md:text-5xl text-hufflepuff-yellow tracking-wide">WELCOME TO HUFFLEPUFF COMMON ROOM</h2>
+                    <p class="mt-4 text-white/70 leading-relaxed text-lg">Step inside and explore the heart of our house.</p>
+                    <button class="bg-hufflepuff-yellow hover:bg-opacity-80 transition-opacity text-hufflepuff-black font-bold py-3 px-8 rounded-full shadow-lg mt-6">Take a tour</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('svg');
+                
+                content.classList.toggle('active');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+    </script>
+</body>
+</html>
